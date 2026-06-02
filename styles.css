@@ -1,0 +1,1152 @@
+:root{--blue:#0f4c81;--dark:#07385f;--line:#d9e5ef;--soft:#f3f8fc;--front:#c62828;--back:#2e7d32;--neutral:#455a64;--orange:#e56f00;--yellow:#ffd400}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef5fb;color:#142033}.page{width:min(1360px,96vw);margin:24px auto}.hero{display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,var(--blue),var(--dark));color:white;border-radius:28px;padding:22px;margin-bottom:20px}.brandLogo{width:120px;max-height:78px;background:#fff;border-radius:16px;padding:10px;object-fit:contain}.hero p{letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin:0 0 6px}.hero h1{margin:0;font-size:2.4rem}.hero span{color:#e9f3fb}.grid{display:grid;grid-template-columns:430px 1fr;gap:20px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 14px 34px #0001}h2{margin:0 0 12px;color:#142033}label{display:block;font-weight:800;margin:12px 0 7px}input,select,textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;font-size:1rem}textarea{min-height:80px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hidden{display:none!important}.step{display:grid;grid-template-columns:52px 1fr 52px;gap:8px}button{border:0;border-radius:12px;background:#e8f1f8;color:var(--blue);font-size:1.25rem;font-weight:900}output{text-align:center;background:var(--soft);border-radius:12px;padding:8px;color:var(--blue);font-size:1.8rem}.primary{width:100%;background:var(--blue);color:white;padding:13px;margin-top:12px;font-size:1rem}.formula{margin:18px 0;background:#f0f6fb;border-left:5px solid var(--blue);border-radius:14px;padding:13px}.offsets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.offsets div{color:white;text-align:center;border-radius:14px;padding:12px}.offsets span{font-size:.8rem}.offsets strong{display:block;font-size:1.35rem;margin:4px}.front{background:var(--front)}.back{background:var(--back)}.neutral{background:var(--neutral)}.optimisationCards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}.optimisationCards div{background:#f0f6fb;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:14px;padding:12px}.optimisationCards span{display:block;color:#667486;font-size:.82rem;font-weight:800}.optimisationCards strong{display:block;color:var(--blue);font-size:1.35rem;margin-top:3px}
+.nikonMenu{width:min(760px,100%);aspect-ratio:1000/750;background:#000;margin:18px auto;border-radius:8px;overflow:hidden;color:white;border:2px solid #222;position:relative;font-family:Arial,Helvetica,sans-serif}.nikonTop{height:10%;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:clamp(22px,3vw,34px);font-weight:300}.backIcon{font-size:.75em;border:2px solid #aaa;border-radius:4px;padding:3px 10px}.orangeLine{height:3px;background:var(--orange)}.nikonIconRow{height:10%;display:flex;justify-content:space-around;align-items:center;color:#aaa;font-size:34px}.nikonRow{height:11%;display:grid;grid-template-columns:82px 1fr;align-items:center;padding:52px 34px 0 22px}.nikonLabel{font-size:clamp(14px,2vw,22px);letter-spacing:.08em}.nikonValue{background:#444;width:48px;text-align:center;padding:1px;font-size:clamp(13px,2vw,20px);margin-top:1px}.nikonScaleBox{height:58%;border:2px solid #aaa;border-radius:4px;position:relative;padding:2px 14px 4px}.nikonNums{display:flex;justify-content:space-between;font-size:clamp(9px,1.2vw,14px);font-weight:300}.nikonRail{position:absolute;left:18px;right:18px;bottom:6px;height:8px;border-top:2px solid #aaa}.nikonRail i.tick{position:absolute;top:-4px;height:10px;border-left:2px solid #aaa}.nikonRail i.major{height:16px}.nikonRail b.ptr{position:absolute;top:-30px;transform:translateX(-50%);width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:24px solid var(--yellow)}.nikonRow.tele .nikonRail b.ptr{border-bottom-color:#aaa}.lensInfoBox{height:11%;margin:2px 6px 0;border:2px solid #555;background:#222;padding:4px 28px;font-size:clamp(13px,1.8vw,20px);line-height:0.95}.lensInfoBox small{font-size:.42em;color:#ddd}.nikonBottom{position:absolute;left:0;right:0;bottom:0;height:12%;display:grid;grid-template-columns:90px 90px 1fr 150px 190px;gap:12px;padding:8px 20px}.nikonBottom button{background:#050505;border:2px solid #aaa;border-radius:6px;color:#ddd;font-size:24px;padding:4px}
+.scaleBox{background:#f7fbfe;border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:16px}.scaleBox h3{margin:0 0 12px}.bigRow{display:grid;grid-template-columns:55px 1fr 44px;align-items:center;gap:8px;margin:12px 0}.bigRow b,.bigRow span{color:var(--blue);font-weight:900}.bigRail{position:relative;height:30px;border-top:2px solid #142033}.bigRail i.tick{position:absolute;top:-6px;height:12px;border-left:1px solid #142033}.bigRail i.major{height:18px;top:-9px}.bigRail i.zero{height:24px;top:-12px;border-left-width:2px}.bigRail b.ptr{position:absolute;top:-16px;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:12px solid var(--blue)}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}.offsets{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.two,.offsets,.optimisationCards{grid-template-columns:1fr}.nikonBottom{grid-template-columns:1fr 1fr}.nikonBottom span{display:none}}
+
+
+/* v4 image-based Nikon menu:
+   Use the approved generated Nikon screen image as the visual base.
+   This avoids scale/label overlap caused by CSS recreation. */
+.nikonMenu{
+  background-image:url("nikon-menu-reference.png") !important;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+  background-color:#000 !important;
+  aspect-ratio: 1365 / 1000 !important;
+}
+
+/* Hide the CSS-built Nikon UI elements that were causing overlap */
+.nikonTop,
+.orangeLine,
+.nikonIconRow,
+.nikonRow,
+.nikonBottom{
+  display:none !important;
+}
+
+/* Keep only the live lens information overlay, positioned over the existing lens panel */
+.lensInfoBox{
+  position:absolute !important;
+  left:2.8% !important;
+  right:2.8% !important;
+  bottom:18.5% !important;
+  height:15.5% !important;
+  margin:0 !important;
+  border:0 !important;
+  background:linear-gradient(90deg,rgba(34,34,34,.96),rgba(34,34,34,.90)) !important;
+  padding:1.7% 4.8% !important;
+  font-size:clamp(18px,3.1vw,38px) !important;
+  line-height:1.05 !important;
+  color:white !important;
+  overflow:hidden !important;
+}
+
+.lensInfoBox small{
+  font-size:.48em !important;
+  color:#ddd !important;
+}
+
+/* Keep the front-end menu visually clean */
+#wideMenuRow,
+#teleMenuRow{
+  display:none !important;
+}
+
+
+/* v5 hard reset: approved Nikon image only.
+   No generated WIDE/TELE rows, no dynamic lens overlay, no CSS menu reconstruction. */
+.nikonMenuImageWrap{
+  width:min(760px,100%) !important;
+  aspect-ratio:1365 / 1000 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+
+.nikonMenuImage{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  object-fit:contain !important;
+  background:#000 !important;
+}
+
+/* Ensure all previous menu reconstruction elements cannot appear */
+.nikonMenu,
+.nikonTop,
+.orangeLine,
+.nikonIconRow,
+.nikonRow,
+.lensInfoBox,
+.nikonBottom,
+#wideMenuRow,
+#teleMenuRow{
+  display:none !important;
+}
+
+
+/* v7 live lens label correction */
+.nikonMenuImageWrap{
+  position:relative !important;
+}
+
+.nikonLensLiveOverlay{
+  position:absolute !important;
+  left:2.5% !important;
+  right:2.5% !important;
+  bottom:18.5% !important;
+  height:15.6% !important;
+  background:linear-gradient(90deg,rgba(34,34,34,.98),rgba(34,34,34,.94)) !important;
+  border:1px solid rgba(120,120,120,.85) !important;
+  color:#fff !important;
+  padding:2.1% 4.1% !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+
+.nikonLensLiveOverlay div{
+  font-size:clamp(16px,2.5vw,34px) !important;
+  line-height:1.05 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonLensLiveOverlay small{
+  margin-top:.45em !important;
+  font-size:clamp(8px,1.25vw,16px) !important;
+  line-height:1 !important;
+  color:#ddd !important;
+}
+
+
+/* v8 lens label refinement */
+.nikonLensLiveOverlay{
+  left:2.7% !important;
+  right:2.7% !important;
+  bottom:19.2% !important;
+  height:13.8% !important;
+  padding:1.35% 4.2% !important;
+  justify-content:center !important;
+}
+
+.nikonLensLiveOverlay div{
+  font-size:clamp(14px,2.05vw,28px) !important;
+  line-height:1.18 !important;
+  padding-bottom:.08em !important;
+}
+
+.nikonLensLiveOverlay small{
+  margin-top:.25em !important;
+  font-size:clamp(8px,1.05vw,14px) !important;
+  line-height:1.15 !important;
+}
+
+.nikonPdfLensOverlay{
+  left:2.7% !important;
+  right:2.7% !important;
+  bottom:19.2% !important;
+  height:13.8% !important;
+  padding:1mm 3.2mm !important;
+}
+
+.nikonPdfLensOverlay div{
+  font-size:8.4pt !important;
+  line-height:1.18 !important;
+}
+
+.nikonPdfLensOverlay small{
+  font-size:5pt !important;
+  margin-top:.35mm !important;
+  line-height:1.1 !important;
+}
+
+
+/* v10 CLEAN FIX:
+   Use a blanked Nikon menu asset and place text only inside the original lens panel.
+   This avoids the previous large overlay rectangle and prevents clipping/overlap. */
+.nikonMenuImageWrap{
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  overflow:hidden !important;
+}
+
+.nikonMenuImage{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+/* Disable all older overlay boxes */
+.nikonLensLiveOverlay,
+.nikonPdfLensOverlay{
+  display:none !important;
+}
+
+/* Frontend text-only lens label */
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:8.4% !important;
+  right:27.0% !important;
+  top:66.4% !important;
+  height:10.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonLensTextOnly div{
+  font-size:clamp(12px,1.62vw,23px) !important;
+  line-height:1.22 !important;
+  font-weight:400 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.nikonLensTextOnly small{
+  margin-top:.25em !important;
+  font-size:clamp(7px,.86vw,12px) !important;
+  line-height:1.18 !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* PDF text-only overlay */
+.nikonPdfMenuBox{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+
+.nikonPdfMenuBox img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:8.4% !important;
+  right:27.0% !important;
+  top:66.4% !important;
+  height:10.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonPdfLensTextOnly div{
+  font-size:7.2pt !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonPdfLensTextOnly small{
+  font-size:4.5pt !important;
+  line-height:1.15 !important;
+  color:#ddd !important;
+  margin-top:.25mm !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+
+/* v12 correction: restore original image-based Nikon menu.
+   Keeps camera/mountain symbols and original menu proportions. */
+.nikonHtmlMenu{
+  display:none !important;
+}
+
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  background:#000 !important;
+}
+
+/* Disable the previous large box overlays */
+.nikonLensLiveOverlay,
+.nikonPdfLensOverlay{
+  display:none !important;
+}
+
+/* Small text-only overlay, positioned inside the original Nikon lens panel */
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:5.6% !important;
+  right:29.5% !important;
+  top:65.7% !important;
+  height:10.3% !important;
+  color:#fff !important;
+  background:transparent !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonLensTextOnly div{
+  font-size:clamp(13px,1.7vw,24px) !important;
+  line-height:1.18 !important;
+  font-weight:400 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.nikonLensTextOnly small{
+  margin-top:.18em !important;
+  font-size:clamp(7px,.88vw,12px) !important;
+  line-height:1.15 !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* PDF version: full menu image, not stretched or cropped */
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+  background:#000 !important;
+}
+
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:5.6% !important;
+  right:29.5% !important;
+  top:65.7% !important;
+  height:10.3% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonPdfLensTextOnly div{
+  font-size:6.7pt !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonPdfLensTextOnly small{
+  font-size:4.1pt !important;
+  line-height:1.12 !important;
+  color:#ddd !important;
+  margin-top:.2mm !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+
+/* v13 forced clean Nikon image fix */
+.nikonHtmlMenu,
+.nikonLensLiveOverlay,
+.nikonPdfLensOverlay{
+  display:none !important;
+}
+
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  background:#000 !important;
+}
+
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:7.3% !important;
+  right:32.5% !important;
+  top:67.0% !important;
+  height:8.7% !important;
+  color:#fff !important;
+  background:transparent !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonLensTextOnly div{
+  font-size:clamp(12px,1.55vw,22px) !important;
+  line-height:1.18 !important;
+  font-weight:400 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.nikonLensTextOnly small{
+  margin-top:.15em !important;
+  font-size:clamp(7px,.82vw,11px) !important;
+  line-height:1.12 !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* PDF image menu: full image contained, no stretching, no cropping */
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+  background:#000 !important;
+}
+
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.3% !important;
+  right:32.5% !important;
+  top:67.0% !important;
+  height:8.7% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonPdfLensTextOnly div{
+  font-size:6.2pt !important;
+  line-height:1.16 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonPdfLensTextOnly small{
+  font-size:3.9pt !important;
+  line-height:1.1 !important;
+  color:#ddd !important;
+  margin-top:.15mm !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+
+/* v14 functional correction */
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+
+/* Text is now small and placed in the cleaned Nikon lens box */
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  margin:0 !important;
+}
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* Shows AF when single focal length mode is chosen, hiding Wide/Tele ambiguity */
+.nikonSingleModeBadge{
+  display:none;
+  position:absolute !important;
+  left:7.0% !important;
+  top:35.1% !important;
+  width:9.5% !important;
+  height:12.5% !important;
+  background:#020202 !important;
+  color:#fff !important;
+  font-size:clamp(18px,2.6vw,34px) !important;
+  align-items:center !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonMenuImageWrap.single-mode .nikonSingleModeBadge{
+  display:flex !important;
+}
+
+/* PDF full image, not cropped */
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+.nikonPdfLensTextOnly div{
+  font-size:5.8pt !important;
+  line-height:1.15 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonPdfLensTextOnly small{
+  font-size:3.6pt !important;
+  line-height:1.05 !important;
+  margin-top:.1mm !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonPdfSingleBadge{
+  display:none;
+}
+.nikonPdfMenuImageWrap.single-mode .nikonPdfSingleBadge{
+  display:flex !important;
+  position:absolute !important;
+  left:7.0% !important;
+  top:35.1% !important;
+  width:9.5% !important;
+  height:12.5% !important;
+  background:#020202 !important;
+  color:#fff !important;
+  font-size:8pt !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+
+/* v15 direct-control functional fix */
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+
+.nikonModeLabel{
+  position:absolute !important;
+  left:5.2% !important;
+  width:12.8% !important;
+  height:7.6% !important;
+  background:#000 !important;
+  color:#fff !important;
+  display:none !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-family:Arial,Helvetica,sans-serif !important;
+  font-size:clamp(17px,2.45vw,34px) !important;
+  font-weight:400 !important;
+  pointer-events:none !important;
+}
+
+#nikonModeWide{ top:32.0% !important; }
+#nikonModeTele{ top:47.6% !important; }
+
+.nikonMenuImageWrap.single-mode #nikonModeWide{
+  display:flex !important;
+}
+.nikonMenuImageWrap.single-mode #nikonModeTele{
+  display:flex !important;
+  color:transparent !important;
+}
+
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  margin:0 !important;
+}
+
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+
+.nikonPdfLensTextOnly div{
+  font-size:5.8pt !important;
+  line-height:1.15 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.nikonPdfLensTextOnly small{
+  font-size:3.6pt !important;
+  line-height:1.05 !important;
+  margin-top:.1mm !important;
+  color:#ddd !important;
+}
+
+.nikonPdfModeLabel{
+  display:none;
+}
+.nikonPdfMenuImageWrap.single-mode .nikonPdfModeLabel{
+  display:flex !important;
+  position:absolute !important;
+  left:5.2% !important;
+  top:32.0% !important;
+  width:12.8% !important;
+  height:7.6% !important;
+  background:#000 !important;
+  color:#fff !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:8pt !important;
+}
+
+
+/* v16 actual-ID fix: front-end menu live overlays */
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+.nikonLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* These deliberately cover the static WIDE/TELE words only in single mode */
+.nikonModeLabel{
+  position:absolute !important;
+  left:5.0% !important;
+  width:14.0% !important;
+  height:8.5% !important;
+  background:#000 !important;
+  color:#fff !important;
+  display:none !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-family:Arial,Helvetica,sans-serif !important;
+  font-size:clamp(16px,2.25vw,31px) !important;
+  font-weight:400 !important;
+  pointer-events:none !important;
+}
+#nikonModeWide{ top:32.2% !important; }
+#nikonModeTele{ top:47.6% !important; }
+.nikonMenuImageWrap.single-mode #nikonModeWide{ display:flex !important; }
+.nikonMenuImageWrap.single-mode #nikonModeTele{ display:flex !important; color:transparent !important; }
+
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+.nikonPdfLensTextOnly div{font-size:5.8pt !important;line-height:1.15 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;}
+.nikonPdfLensTextOnly small{font-size:3.6pt !important;line-height:1.05 !important;margin-top:.1mm !important;color:#ddd !important;}
+.nikonPdfModeLabel{display:none;}
+.nikonPdfMenuImageWrap.single-mode .nikonPdfModeLabel{
+  display:flex !important;
+  position:absolute !important;
+  left:5.0% !important;
+  top:32.2% !important;
+  width:14.0% !important;
+  height:8.5% !important;
+  background:#000 !important;
+  color:#fff !important;
+  font-size:8pt !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+
+/* v17 hard live sync support */
+.nikonMenuImageWrap{
+  position:relative !important;
+}
+.nikonLensTextOnly{
+  display:flex !important;
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonModeLabel{
+  position:absolute !important;
+  left:5.0% !important;
+  width:14.0% !important;
+  height:8.5% !important;
+  background:#000 !important;
+  color:#fff !important;
+  display:none !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-family:Arial,Helvetica,sans-serif !important;
+  font-size:clamp(16px,2.25vw,31px) !important;
+  font-weight:400 !important;
+  pointer-events:none !important;
+}
+#nikonModeWide{ top:32.2% !important; }
+#nikonModeTele{ top:47.6% !important; }
+.nikonMenuImageWrap.single-mode #nikonModeWide{ display:flex !important; }
+.nikonMenuImageWrap.single-mode #nikonModeTele{ display:flex !important; color:transparent !important; }
+
+
+/* v18 correction: remove the single-mode AF overlay that broke the Nikon menu */
+.nikonModeLabel,
+#nikonModeWide,
+#nikonModeTele,
+.nikonMenuImageWrap.single-mode #nikonModeWide,
+.nikonMenuImageWrap.single-mode #nikonModeTele,
+.nikonPdfModeLabel,
+.nikonPdfMenuImageWrap.single-mode .nikonPdfModeLabel{
+  display:none !important;
+  visibility:hidden !important;
+}
+
+/* Keep only the lens name / lens number live text */
+.nikonLensTextOnly{
+  display:flex !important;
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* PDF: full clean menu image, no AF overlay */
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+.nikonPdfLensTextOnly div{
+  font-size:5.8pt !important;
+  line-height:1.15 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonPdfLensTextOnly small{
+  font-size:3.6pt !important;
+  line-height:1.05 !important;
+  margin-top:.1mm !important;
+  color:#ddd !important;
+}
+
+
+/* v19: completely remove single-mode visual overlay */
+.nikonModeLabel,
+#nikonModeWide,
+#nikonModeTele,
+.nikonPdfModeLabel{
+  display:none !important;
+  visibility:hidden !important;
+  width:0 !important;
+  height:0 !important;
+  overflow:hidden !important;
+}
+
+/* Preserve original Nikon menu image proportions */
+.nikonMenuImageWrap{
+  display:block !important;
+  position:relative !important;
+  width:min(760px,100%) !important;
+  aspect-ratio:1448 / 1086 !important;
+  margin:18px auto !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+  border:2px solid #222 !important;
+}
+.nikonMenuImage{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}
+
+/* Lens text only */
+.nikonLensTextOnly{
+  display:flex !important;
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  background:transparent !important;
+  color:#fff !important;
+  overflow:hidden !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  pointer-events:none !important;
+}
+.nikonLensTextOnly div{
+  font-size:clamp(11px,1.42vw,20px) !important;
+  line-height:1.18 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonLensTextOnly small{
+  font-size:clamp(7px,.78vw,10px) !important;
+  line-height:1.1 !important;
+  margin-top:.12em !important;
+  color:#ddd !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+/* PDF image only + lens text only */
+.nikonPdfMenuImageWrap{
+  position:relative !important;
+  width:100% !important;
+  aspect-ratio:1448 / 1086 !important;
+  background:#000 !important;
+  overflow:hidden !important;
+}
+.nikonPdfMenuImageWrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+.nikonPdfLensTextOnly{
+  position:absolute !important;
+  left:7.4% !important;
+  right:34.0% !important;
+  top:67.2% !important;
+  height:8.2% !important;
+  color:#fff !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+.nikonPdfLensTextOnly div{
+  font-size:5.8pt !important;
+  line-height:1.15 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.nikonPdfLensTextOnly small{
+  font-size:3.6pt !important;
+  line-height:1.05 !important;
+  margin-top:.1mm !important;
+  color:#ddd !important;
+}
