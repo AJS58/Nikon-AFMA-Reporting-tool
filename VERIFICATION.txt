@@ -1,8 +1,0 @@
-Verified against actual index.html IDs:
-jobRef, lensName, lensNumber, mode, nikonLiveLensText, nikonLiveLensNo, nikonModeWide, nikonModeTele, pdfBtn.
-
-Expected:
-- On load: jobRef becomes NIK-YYYYMMDD-001.
-- Typing in Lens description changes nikonLiveLensText.
-- Changing Saved lens number changes nikonLiveLensNo.
-- Choosing Single Fine-Tune value adds single-mode class to nikonMenu and changes visible menu label to AF.
