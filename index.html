@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cameracal Nikon AF Fine-Tune Tool</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<main class="page">
+<header class="hero"><img src="logo.png" class="brandLogo"><div><p>Camera & Lens Calibration</p><h1>Nikon AF Fine-Tune Report Tool</h1><span>Separate Nikon reporting tool with saved lens memory number.</span></div></header>
+<section class="grid">
+<aside class="panel">
+<h2>Job Details</h2>
+<div class="two"><label>Customer name<input id="customerName"></label><label>Reference<input id="jobRef"></label></div>
+<div class="two"><label>Date<input id="reportDate" type="date"></label><label>Technician<input id="technicianName" value="Cameracal Services"></label></div>
+<label>Camera description<input id="cameraDescription" placeholder="e.g. Nikon D780"></label>
+<label>Lens description<input id="lensName" value="AF-S 70-200mm f/2.8G VR II"></label>
+<h2>Nikon Lens Memory</h2>
+<label>Saved lens number<select id="lensNumber"></select></label>
+<h2>AF Fine-Tune</h2>
+<label>Adjustment type<select id="mode"><option value="wideTele" selected>Wide / Tele Fine-Tune values</option><option value="single">Single Fine-Tune value</option></select></label>
+<div id="wtFocals" class="two"><label>Wide focal length<input id="wideFocal" type="number" value="70"></label><label>Tele focal length<input id="teleFocal" type="number" value="200"></label></div>
+<label id="singleFocalWrap" class="hidden">Single focal length<input id="singleFocal" type="number" value="200"></label>
+<div id="distanceWT" class="two">
+<label>Wide subject distance (metres)<select id="wideDistance"></select></label>
+<label>Tele subject distance (metres)<select id="teleDistance"></select></label>
+</div>
+<label id="singleDistanceWrap" class="hidden">Subject distance (metres)<select id="singleDistance"></select></label>
+<h2>Lens Optimisation</h2>
+<div id="optWT" class="two"><label>Wide optimum aperture<select id="wideOptAperture"></select></label><label>Tele optimum aperture<select id="teleOptAperture"></select></label></div>
+<label id="optSingle" class="hidden">Single optimum aperture<select id="singleOptAperture"></select></label>
+<h2>Image Resolution Performance (LP/mm)</h2>
+<div id="qualityWT" class="two"><label>Wide before<input id="wideLPBefore" type="number" placeholder="LP/mm"></label><label>Wide after<input id="wideLPAfter" type="number" placeholder="LP/mm"></label><label>Tele before<input id="teleLPBefore" type="number" placeholder="LP/mm"></label><label>Tele after<input id="teleLPAfter" type="number" placeholder="LP/mm"></label></div>
+<div id="qualitySingle" class="hidden"><div class="two"><label>Before<input id="singleLPBefore" type="number" placeholder="LP/mm"></label><label>After<input id="singleLPAfter" type="number" placeholder="LP/mm"></label></div></div>
+<h2>Before Fine-Tune</h2>
+<div id="beforeWT" class="two"><label>Wide before<input id="beforeWide" type="number" min="-20" max="20" value="0"></label><label>Tele before<input id="beforeTele" type="number" min="-20" max="20" value="0"></label></div>
+<label id="beforeSingleWrap" class="hidden">Single before<input id="beforeSingle" type="number" min="-20" max="20" value="0"></label>
+<h2>After Fine-Tune</h2>
+<div id="afterWT">
+<label>Wide after<div class="step"><button data-target="wideValue" data-step="-1" type="button">−</button><output id="wideOutput">0</output><button data-target="wideValue" data-step="1" type="button">+</button></div><input id="wideValue" type="range" min="-20" max="20" value="0"></label>
+<label>Tele after<div class="step"><button data-target="teleValue" data-step="-1" type="button">−</button><output id="teleOutput">0</output><button data-target="teleValue" data-step="1" type="button">+</button></div><input id="teleValue" type="range" min="-20" max="20" value="0"></label>
+</div>
+<div id="afterSingle" class="hidden"><label>Single after<div class="step"><button data-target="singleValue" data-step="-1" type="button">−</button><output id="singleOutput">0</output><button data-target="singleValue" data-step="1" type="button">+</button></div><input id="singleValue" type="range" min="-20" max="20" value="0"></label></div>
+<div class="formula"><strong>Nikon AF Fine-Tune</strong><br>Saved values are recorded against the selected lens memory number.</div>
+<label>Technician notes<textarea id="techNotes"></textarea></label>
+<button id="pdfBtn" class="primary" type="button">Generate Nikon PDF Report</button>
+</aside>
+<section class="panel mainPanel">
+<h2>Live Nikon Fine-Tune Result</h2><p id="resultLine"></p>
+<div class="offsets"><div id="beforeWideCard"><span>Before wide</span><strong></strong><small></small></div><div id="wideCard"><span>After wide</span><strong></strong><small></small></div><div id="beforeTeleCard"><span>Before tele</span><strong></strong><small></small></div><div id="teleCard"><span>After tele</span><strong></strong><small></small></div></div>
+<div class="optimisationCards"><div><span>Wide optimum aperture</span><strong id="wideOptDisplay">Not specified</strong></div><div id="teleOptCard"><span>Tele optimum aperture</span><strong id="teleOptDisplay">Not specified</strong></div></div>
+
+<div class="nikonMenuImageWrap" id="nikonMenu">
+  <img src="nikon-menu-clean.png" class="nikonMenuImage" alt="Nikon AF Fine-Tune menu">
+  <div class="nikonLensTextOnly">
+    <div id="nikonLiveLensText">Lens</div>
+    <small><span id="nikonLiveLensNo">No number assigned</span></small>
+  </div>
+</div>
+
+<div class="scaleBox"><h3>Nikon AF Fine-Tune Scale</h3><div class="bigRow" id="scaleWide"><b>WIDE</b><div class="bigRail"></div><span></span></div><div class="bigRow" id="scaleTele"><b>TELE</b><div class="bigRail"></div><span></span></div></div>
+</section></section></main><script src="nikon-app-v13.js"></script></body></html>
